@@ -5,6 +5,9 @@ module.exports = {
   },
   extends: [
     'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:prettier/recommended',
+    'eslint-config-prettier',
     'standard'
   ],
   parser: '@typescript-eslint/parser',
@@ -15,10 +18,16 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module'
   },
-  plugins: [
-    'react',
-    '@typescript-eslint'
-  ],
+  plugins: ['react', '@typescript-eslint'],
   rules: {
+    'prettier/prettier': 'error',
+    'space-before-function-paren': [
+      'error',
+      {
+        anonymous: 'always',
+        named: 'none',
+        asyncArrow: 'always'
+      }
+    ]
   }
 }
