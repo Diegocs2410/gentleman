@@ -6,7 +6,7 @@ const Home: React.FC = () => {
   return (
     <div className='bg-gray-50'>
       <Navbar />
-      <div className='relative'>
+      <div className='relative' id='home'>
         <img
           src={barberImg}
           alt='Fondo de la página de inicio'
