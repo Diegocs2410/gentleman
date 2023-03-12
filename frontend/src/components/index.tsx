@@ -1,3 +1,5 @@
 export { Nosotros } from './About'
 export { Navbar } from './Navbar'
 export { Servicios } from './servicios/Index'
+export { Contacto } from './Contact'
+export { Testimonials } from './Testimonials'

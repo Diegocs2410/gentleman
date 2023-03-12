@@ -6,9 +6,9 @@ const Navbar: React.FC = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.pageYOffset > 0 && isTransparent) {
+      if (window.scrollY > 0 && isTransparent) {
         setIsTransparent(false)
-      } else if (window.pageYOffset === 0 && !isTransparent) {
+      } else if (window.scrollY === 0 && !isTransparent) {
         setIsTransparent(true)
       }
     }
@@ -46,18 +46,18 @@ const Navbar: React.FC = () => {
             >
               Servicios
             </a>
-            <Link
-              to='/about'
+            <a
+              href='#about'
               className='text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium'
             >
               Nosotros
-            </Link>
-            <Link
-              to='/contact'
+            </a>
+            <a
+              href='#contact'
               className='text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium'
             >
               Contacto
-            </Link>
+            </a>
             <Link
               to='/login'
               className='text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium'

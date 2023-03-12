@@ -1,6 +1,12 @@
 import { Link } from 'react-router-dom'
 import barberImg from '../../assets/img/barbershop.jpeg'
-import { Nosotros, Navbar, Servicios } from '../../components'
+import {
+  Nosotros,
+  Navbar,
+  Servicios,
+  Contacto,
+  Testimonials
+} from '../../components'
 
 const Home: React.FC = () => {
   return (
@@ -29,6 +35,8 @@ const Home: React.FC = () => {
       <Servicios />
       {/* Nosotros */}
       <Nosotros />
+      <Contacto />
+      <Testimonials />
     </div>
   )
 }
