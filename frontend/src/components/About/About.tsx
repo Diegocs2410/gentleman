@@ -2,7 +2,7 @@ import barberImg from '../../assets/img/barbershop.jpeg'
 
 const Nosotros: React.FC = () => {
   return (
-    <section className='max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8'>
+    <section className='max-w-7xl mx-auto pt-4 py-16 px-4 sm:px-6 lg:px-8'>
       <div className='grid grid-cols-1 lg:grid-cols-2 gap-8 items-center'>
         <div id='about'>
           <h2 className='text-3xl font-extrabold tracking-tight mb-4'>

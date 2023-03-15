@@ -1,91 +1,92 @@
 import { FaPhone, FaMapMarkerAlt, FaEnvelope } from 'react-icons/fa'
+import { FiPhone, FiMail } from 'react-icons/fi'
 
-const Contacto: React.FC = () => {
+const Contact = () => {
   return (
-    <footer className='bg-gray-900 text-white py-16'>
-      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-        <h2 className='text-3xl font-extrabold tracking-tight mb-8'>
-          Contáctanos
-        </h2>
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12'>
-          <div>
-            <div className='flex items-center mb-4'>
-              <FaPhone className='text-3xl mr-4' />
-              <p className='text-lg'>
-                Teléfono:{' '}
-                <a href='tel:555-555-5555' className='underline'>
-                  555-555-5555
-                </a>
-              </p>
-            </div>
-            <div className='flex items-center mb-4'>
-              <FaMapMarkerAlt className='text-3xl mr-4' />
-              <p className='text-lg'>
-                Dirección: 1234 Avenida Principal, Ciudad de México
-              </p>
-            </div>
-            <div className='flex items-center'>
-              <FaEnvelope className='text-3xl mr-4' />
-              <p className='text-lg'>
-                Correo electrónico:{' '}
-                <a href='mailto:info@gentleman.com' className='underline'>
-                  info@gentleman.com
-                </a>
-              </p>
-            </div>
+    <div className='flex flex-col items-center bg-white dark:bg-gray-800 p-4 rounded-lg'>
+      <h2 className='text-2xl font-bold mb-4'>Contáctanos</h2>
+      <div className='flex items-center mb-2'>
+        <FiPhone className='h-6 w-6 mr-2 text-gray-600 dark:text-gray-400' />
+        <span className='text-gray-600 dark:text-gray-400'>
+          +1 (555) 555-1234
+        </span>
+      </div>
+      <div className='flex items-center mb-2'>
+        <FiMail className='h-6 w-6 mr-2 text-gray-600 dark:text-gray-400' />
+        <span className='text-gray-600 dark:text-gray-400'>
+          info@barbershop.com
+        </span>
+      </div>
+      <form className='w-full max-w-md'>
+        <div className='flex flex-wrap -mx-3 mb-6'>
+          <div className='w-full md:w-1/2 px-3 mb-6 md:mb-0'>
+            <label
+              className='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2'
+              htmlFor='grid-first-name'
+            >
+              Nombre
+            </label>
+            <input
+              className='appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 dark:bg-gray-700 dark:text-white'
+              id='grid-first-name'
+              type='text'
+              placeholder='Juan'
+            />
           </div>
-          <div>
-            <form className='space-y-6'>
-              <div>
-                <label htmlFor='name' className='sr-only'>
-                  Nombre completo
-                </label>
-                <input
-                  type='text'
-                  name='name'
-                  id='name'
-                  className='block w-full rounded-md bg-gray-700 border-transparent focus:border-gray-500 focus:bg-gray-800 focus:ring-0'
-                  placeholder='Nombre completo'
-                />
-              </div>
-              <div>
-                <label htmlFor='email' className='sr-only'>
-                  Correo electrónico
-                </label>
-                <input
-                  type='email'
-                  name='email'
-                  id='email'
-                  className='block w-full rounded-md bg-gray-700 border-transparent focus:border-gray-500 focus:bg-gray-800 focus:ring-0'
-                  placeholder='Correo electrónico'
-                />
-              </div>
-              <div>
-                <label htmlFor='message' className='sr-only'>
-                  Mensaje
-                </label>
-                <textarea
-                  name='message'
-                  id='message'
-                  rows={4}
-                  className='block w-full rounded-md bg-gray-700 border-transparent focus:border-gray-500 focus:bg-gray-800 focus:ring-0'
-                  placeholder='Mensaje'
-                ></textarea>
-              </div>
-              <div>
-                <button
-                  type='submit'
-                  className='inline-flex items-center px-6 py-3 border border-transparent rounded-md font-semibold text-gray-800 bg-white hover:bg-gray-100 transition-colors'
-                >
-                  Enviar mensaje
-                </button>
-              </div>
-            </form>
+          <div className='w-full md:w-1/2 px-3'>
+            <label
+              className='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2'
+              htmlFor='grid-last-name'
+            >
+              Apellido
+            </label>
+            <input
+              className='appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 dark:bg-gray-700 dark:text-white'
+              id='grid-last-name'
+              type='text'
+              placeholder='Pérez'
+            />
           </div>
         </div>
-      </div>
-    </footer>
+        <div className='mb-4'>
+          <label
+            className='block text-gray-700 text-sm font-bold mb-2'
+            htmlFor='grid-email'
+          >
+            Correo electrónico
+          </label>
+          <input
+            className='appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 dark:bg-gray-700 dark:text-white'
+            id='grid-email'
+            type='email'
+            placeholder='example@example.com'
+          />
+        </div>
+        <div className='mb-4'>
+          <label
+            className='block text-gray-700 text-sm font-bold mb-2'
+            htmlFor='grid-message'
+          >
+            Mensaje
+          </label>
+          <textarea
+            className='no-resize appearance-none block w-full bg-gray-200
+      text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 dark:bg-gray-700 dark:text-white'
+            id='grid-message'
+            placeholder='Escriba su mensaje aquí...'
+          ></textarea>
+        </div>
+        <div className='flex justify-end'>
+          <button
+            className='px-8 py-3 bg-blue-500 text-white rounded-full hover:bg-blue-700 transition-colors dark:bg-gray-800 dark:text-white'
+            type='button'
+          >
+            Enviar
+          </button>
+        </div>
+      </form>
+    </div>
   )
 }
 
-export default Contacto
+export default Contact

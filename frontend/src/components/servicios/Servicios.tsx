@@ -6,7 +6,7 @@ const Servicios = () => {
   return (
     <section
       id='services'
-      className=' mx-auto py-16 px-4 sm:px-6 lg:px-8 bg-black'
+      className=' mx-auto py-16 px-4 pb-2 sm:px-6 lg:px-8 bg-black'
     >
       <h2 className='text-3xl font-extrabold tracking-tight mb-8 text-white'>
         Servicios que ofrecemos
