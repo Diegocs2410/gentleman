@@ -1,25 +1,31 @@
-import { useCallback, useState } from 'react'
-import { loginSchema } from '../../utils'
+import { useState } from 'react'
 import * as Yup from 'yup'
-import { loginUser } from '../../api/api'
+import { createUser } from '../../api/api'
 import { useNavigate } from 'react-router-dom'
 
-const Login: React.FC = () => {
-  const navigate = useNavigate()
+const CreateUser = () => {
+  const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [name, setName] = useState('')
   const [errors, setErrors] = useState<{ [key: string]: string }>({})
+
+  const navigate = useNavigate()
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     try {
-      await loginSchema.validate(
-        { name, email, password },
-        { abortEarly: false }
-      )
-      const response = await loginUser(name, email, password)
+      await Yup.object({
+        name: Yup.string().required('Campo requerido'),
+        email: Yup.string()
+          .email('Correo electrónico inválido')
+          .required('Campo requerido'),
+        password: Yup.string().required('Campo requerido')
+      }).validate({ name, email, password }, { abortEarly: false })
+      const response = await createUser(name, email, password)
       console.log(response)
+      setName('')
+      setEmail('')
+      setPassword('')
       setErrors({})
       navigate('/')
     } catch (error) {
@@ -33,47 +39,10 @@ const Login: React.FC = () => {
     }
   }
 
-  const handleChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      const { name, value } = e.target
-      switch (name) {
-        case 'name':
-          setName(value)
-          setErrors((prevState) => {
-            const newState = { ...prevState }
-            delete newState.name
-            return newState
-          })
-          break
-        case 'email':
-          setEmail(value)
-          setErrors((prevState) => {
-            const newState = { ...prevState }
-            delete newState.email
-            return newState
-          })
-          break
-        case 'password':
-          setPassword(value)
-          setErrors((prevState) => {
-            const newState = { ...prevState }
-            delete newState.password
-            return newState
-          })
-          break
-        default:
-          break
-      }
-    },
-    [setName, setEmail, setErrors, setPassword]
-  )
-
   return (
     <div className='flex items-center justify-center min-h-screen bg-gray-900'>
       <div className='w-full max-w-md p-8 bg-gray-800 rounded-lg shadow-md'>
-        <h1 className='mb-8 text-2xl font-bold text-gray-100'>
-          Inicia sesión en tu cuenta
-        </h1>
+        <h1 className='mb-8 text-2xl font-bold text-gray-100'>Crear usuario</h1>
         <form onSubmit={handleSubmit}>
           <div className='mb-4'>
             <label
@@ -90,7 +59,14 @@ const Login: React.FC = () => {
                 errors.name ? 'border-red-500' : ''
               }`}
               value={name}
-              onChange={handleChange}
+              onChange={(e) => {
+                setName(e.target.value)
+                setErrors((prevState) => {
+                  const newState = { ...prevState }
+                  delete newState.name
+                  return newState
+                })
+              }}
             />
             {errors.name && <p className='text-red-500'>{errors.name}</p>}
           </div>
@@ -109,7 +85,14 @@ const Login: React.FC = () => {
                 errors.email ? 'border-red-500' : ''
               }`}
               value={email}
-              onChange={handleChange}
+              onChange={(e) => {
+                setEmail(e.target.value)
+                setErrors((prevState) => {
+                  const newState = { ...prevState }
+                  delete newState.email
+                  return newState
+                })
+              }}
             />
             {errors.email && <p className='text-red-500'>{errors.email}</p>}
           </div>
@@ -118,7 +101,7 @@ const Login: React.FC = () => {
               htmlFor='password'
               className='block mb-2 text-sm font-medium text-gray-300'
             >
-              Contraseña
+              Password
             </label>
             <input
               type='password'
@@ -128,7 +111,14 @@ const Login: React.FC = () => {
                 errors.password ? 'border-red-500' : ''
               }`}
               value={password}
-              onChange={handleChange}
+              onChange={(e) => {
+                setPassword(e.target.value)
+                setErrors((prevState) => {
+                  const newState = { ...prevState }
+                  delete newState.password
+                  return newState
+                })
+              }}
             />
             {errors.password && (
               <p className='text-red-500'>{errors.password}</p>
@@ -138,7 +128,7 @@ const Login: React.FC = () => {
             type='submit'
             className='w-full py-2 text-white bg-blue-500 rounded-lg hover:bg-blue-600'
           >
-            Iniciar sesión
+            Crear usuario
           </button>
         </form>
       </div>
@@ -146,4 +136,4 @@ const Login: React.FC = () => {
   )
 }
 
-export default Login
+export default CreateUser
