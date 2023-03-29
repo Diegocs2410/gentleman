@@ -22,7 +22,7 @@ const Home: React.FC = () => {
         <div className='absolute top-0 left-0 w-full h-full bg-black opacity-50'></div>
         <div className='absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center text-white px-4 sm:px-6 lg:px-8'>
           <h1 className='text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-8 font-serif text-center'>
-            Tu mejor opción para un corte de cabello en la ciudad
+            asdasdasdasd
           </h1>
           <Link
             to='/book'
